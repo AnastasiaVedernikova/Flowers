@@ -1,24 +1,42 @@
 package com.vedernikova;
 
+import java.util.Arrays;
+
 public class Main {
 
     public static void main(String[] args) {
-        Roses rose_1 = new Roses("red",3.5,8);
-        Tulips tulips_1 = new Tulips(6.8,"yellow");
-        Chamomile chamomile_1 = new Chamomile("white",5,5);
-        Roses rose_2 = new Roses("white", 4, 7);
-        Bouquet bouquet_1 = new Bouquet();
-        bouquet_1.addFlower(tulips_1);
-        bouquet_1.addFlower(rose_1);
-        bouquet_1.addFlower(chamomile_1);
-        bouquet_1.addFlower(rose_2);
-        System.out.println(bouquet_1);
-        System.out.println(bouquet_1.Prise());
-        bouquet_1.SortFreshness();
-        System.out.println(bouquet_1);
-        System.out.println(bouquet_1.FindSteam(3,20));
+        FlowerSpec spec = new FlowerSpec();
+        spec.setFreshness(20);
+        spec.setColor(FlowerColor.BLUE);
+        Roses rose1 = new Roses(spec);
+//        System.out.println(rose1);
 
 
-	// write your code here
+        FlowerSpec spec1 = new FlowerSpec();
+        spec1.setFreshness(5);
+        spec1.setColor(FlowerColor.GREEN);
+        Chamomile chamomile1 = new Chamomile(spec1);
+        //System.out.println(chamomile1);
+
+        FlowerSpec spec2 = new FlowerSpec();
+        spec2.setColor(FlowerColor.RED);
+        Tulips tulip1 = new Tulips(spec2);
+
+
+        FlowerSpec spec3 = new FlowerSpec();
+        spec3.setColor(FlowerColor.RED);
+        Tulips tulip2 = new Tulips(spec3);
+
+        Bouquet bouquet = new Bouquet();
+        bouquet.addFlower(chamomile1);
+        bouquet.addFlower(rose1);
+        bouquet.addFlower(tulip1);
+        bouquet.addFlower(tulip2);
+
+
+        bouquet.SortFreshness();
+        System.out.println(bouquet);
+        System.out.println(Arrays.toString(bouquet.search(spec2)));
+
     }
 }
