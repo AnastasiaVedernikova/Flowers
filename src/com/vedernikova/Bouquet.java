@@ -5,10 +5,12 @@ import java.util.Arrays;
 /**
  * Created by cs.ucu.edu.ua on 03.10.2016.
  */
-public class Bouquet {
+public class Bouquet implements Comparable<Bouquet>{
     private Flowers[] flowers = new Flowers[1];
     private int lastIndex = 0;
-
+    public int compareTo(Bouquet o){
+        return this.Price() - o.Price();
+    }
     public void addFlower(Flowers nw) {
         if (lastIndex < flowers.length) {
             flowers[lastIndex] = nw;
@@ -28,12 +30,12 @@ public class Bouquet {
         return Arrays.toString(flowers);
     }
 
-    public Integer Prise() {
-        int prise = 0;
+    public Integer Price() {
+        int price = 0;
         for (Flowers i : this.flowers){
-            prise += i.getPrice();
+            price += i.getPrice();
         }
-        return prise;
+        return price;
     }
 
     public void SortFreshness() {

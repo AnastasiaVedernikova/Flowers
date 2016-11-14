@@ -3,7 +3,11 @@ package com.vedernikova;
 /**
  * Created by cs.ucu.edu.ua on 17.10.2016.
  */
-public class FlowerSpec {
+public class FlowerSpec extends Spec {
+    public FlowerSpec(){
+        super(null,0);
+    }
+
     protected double stemlength;
 
     protected int price;

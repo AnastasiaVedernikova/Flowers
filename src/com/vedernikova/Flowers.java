@@ -1,9 +1,16 @@
 package com.vedernikova;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 /**
  * Created by cs.ucu.edu.ua on 03.10.2016.
  */
-public  class Flowers {
+public  class Flowers{
+    //public Flowers(FlowerSpec spec){
+   //     this.spec = spec;
+               // Arrays.copyOf(spec);///????
+  //  }
 
     protected FlowerSpec spec;
     private FlowerSpec getFlowerSpec(){
@@ -28,6 +35,7 @@ public  class Flowers {
     public void setFreshness(int freshness) {
         spec.setFreshness(freshness);
     }
+
 
 
 
