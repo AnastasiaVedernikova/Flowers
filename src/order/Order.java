@@ -2,6 +2,7 @@ package order;
 
 import com.vedernikova.Bouquet;
 import com.vedernikova.Flowers;
+import observe.TulipSupplierObserver;
 import observe.Observarble;
 import observe.RomushkaSupplierObserver;
 
@@ -13,16 +14,17 @@ import java.util.Observer;
  * Created by cs.ucu.edu.ua on 07.11.2016.
  */
 public class Order extends Observarble {
-    RomushkaSupplierObserver ch = new RomushkaSupplierObserver();
-    List<Observer> lst;
 
-    public   LinkedList<Item> items = new LinkedList<Item>();
+    public   LinkedList<FlowerBucket> items = new LinkedList<FlowerBucket>();
+
     public LinkedList getItems() {
         return items;
     }
 
+
     public void setItems(LinkedList items) {
         this.items = items;
+
     }
 
 
@@ -32,6 +34,7 @@ public class Order extends Observarble {
 
     public void setPayment(Ipaymant payment) {
         this.payment = payment;
+
     }
 
     private  Ipaymant payment;
@@ -42,6 +45,7 @@ public class Order extends Observarble {
 
     public void setDelivary(Idelivary delivary) {
         this.delivary = delivary;
+
     }
 
     private  Idelivary delivary;
@@ -51,10 +55,12 @@ public class Order extends Observarble {
 
     public void setPaymentStrategy(Ipaymant payment){
         this.payment = payment;
+
     }
 
     public void setDelivaryStrategy(Idelivary delivary){
         this.delivary = delivary;
+
     }
 
     public double TotalPrice(){
@@ -73,17 +79,18 @@ public class Order extends Observarble {
         if(this.payment != null){
             return this.payment.pay(100.0);
         }
-       // notifyAll();//своє
-       // ch.update(this, items);
+        this.NotifyAllObservers(this.items);
         return "";
 
     }
-    public void addItem(Item item){
+    public void addItem(FlowerBucket item){
         this.items.add(item);
+        this.NotifyAllObservers(this.items);
 
     }
-    public void removeItem(Item item){
+    public void removeItem(FlowerBucket item){
         items.remove(item);
+        this.NotifyAllObservers(this.items);
 
     }
 
