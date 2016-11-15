@@ -13,8 +13,10 @@ import static javafx.scene.input.KeyCode.I;
 
 public class RomushkaSupplierObserver implements Observer {
     Observarble subject;
+
     public RomushkaSupplierObserver(Observarble subject){this.subject = subject;
     subject.attach(this);}
+
     @Override
     public void update(Observarble s,  LinkedList<FlowerBucket> items) {
         for (FlowerBucket bucket : items) {

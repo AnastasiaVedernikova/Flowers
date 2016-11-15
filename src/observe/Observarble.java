@@ -12,19 +12,23 @@ import java.util.LinkedList;
 public class Observarble {
     public ArrayList<Observer> observers = new ArrayList<Observer>();
     String state;
+
     public String getState(){
         System.out.println("getstate");
         return this.state;
     }
+
     public void setState(String State){
         this.state = State;
         System.out.println("setState");
     }
+
     public void attach(Observer observer) {
         System.out.println("attach");
         this.observers.add(observer);
 
     }
+
     public void NotifyAllObservers(LinkedList<FlowerBucket> b){
         System.out.println("notified");
         for (Observer ob : observers) {
@@ -33,9 +37,4 @@ public class Observarble {
         }
     }
 
-    /**
-     * Created by cs.ucu.edu.ua on 15.11.2016.
-     */
-    public static class MainObserver {
-    }
 }

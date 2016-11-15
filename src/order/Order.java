@@ -20,13 +20,11 @@ public class Order extends Observarble {
     public LinkedList getItems() {
         return items;
     }
-
-
+    
     public void setItems(LinkedList items) {
         this.items = items;
 
     }
-
 
     public Ipaymant getPayment() {
         return this.payment;
