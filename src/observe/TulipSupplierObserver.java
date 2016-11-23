@@ -3,35 +3,33 @@ package observe;
 import com.vedernikova.Flowers;
 import order.FlowerBucket;
 import order.Item;
+import order.Order;
 
 import java.util.LinkedList;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * Created by cs.ucu.edu.ua on 14.11.2016.
  */
 
-public class TulipSupplierObserver implements Observer{
-    Observarble subject;
+public class TulipSupplierObserver implements Observer {
+    Observable subject;
 
-    Integer amount_cactus;
-    public TulipSupplierObserver(Observarble subject){this.subject = subject;
-    subject.attach(this);}
+    public TulipSupplierObserver(Observable subject) {
+        this.subject = subject;
+    }
 
-    @Override
-    public void update(Observarble s, LinkedList<FlowerBucket> items) {
-        for (FlowerBucket bucket: items ){
-            for (Flowers flow: bucket.fl) {
+    public void update(Observable s, Object items) {
+        Integer am  = 0;
+        for (FlowerBucket bucket : (LinkedList<FlowerBucket>)items) {
+            for (Flowers flow : bucket.fl) {
                 if (flow.getName().equals("Tulip")) {
-                    int m = flow.getFreshness();
-                    
-                    if (m>0) {
-                        flow.setFreshness(m - 1);
-                        System.out.println("old freshness- " + m);
-                        System.out.println("new freshness of tulip - " + (m - 1));
-                    }
+                    am +=1;
                 }
             }
-
         }
+        System.out.println("Sent for "+ am + " tulips");
     }
+
 }

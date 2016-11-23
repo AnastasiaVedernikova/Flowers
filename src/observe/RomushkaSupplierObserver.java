@@ -1,36 +1,35 @@
 package observe;
 
 import java.util.LinkedList;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * Created by cs.ucu.edu.ua on 14.11.2016.
  */
+
 import com.vedernikova.Flowers;
 import order.FlowerBucket;
-import order.Item;
-
-import static javafx.scene.input.KeyCode.I;
 
 public class RomushkaSupplierObserver implements Observer {
-    Observarble subject;
+    Observable subject;
 
-    public RomushkaSupplierObserver(Observarble subject){this.subject = subject;
-    subject.attach(this);}
+    public RomushkaSupplierObserver(Observable subject){
+        this.subject = subject;
+    }
 
-    @Override
-    public void update(Observarble s,  LinkedList<FlowerBucket> items) {
-        for (FlowerBucket bucket : items) {
+
+    public void update(Observable s,  Object items) {
+        Integer am  = 0;
+        for (FlowerBucket bucket : (LinkedList<FlowerBucket>)items) {
             for (Flowers flow : bucket.fl) {
                 if (flow.getName().equals("Chamomile")) {
-                    int m = flow.getFreshness();
-                    if (m > 0) {
-                        flow.setFreshness(m - 1);
-                        System.out.println("old freshness- " + m);
-                        System.out.println("new freshness of chamomile - " + (m - 2));
-                    }
+                    am +=1;
                 }
             }
 
         }
+
+        System.out.println("Sent for "+ am + " chamomiles");
     }
 }

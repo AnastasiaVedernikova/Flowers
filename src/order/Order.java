@@ -3,19 +3,24 @@ package order;
 import com.vedernikova.Bouquet;
 import com.vedernikova.Flowers;
 import observe.TulipSupplierObserver;
-import observe.Observarble;
+//import observe.Observarble;
 import observe.RomushkaSupplierObserver;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Observer;
+import java.util.Observable;
 
 /**
  * Created by cs.ucu.edu.ua on 07.11.2016.
  */
-public class Order extends Observarble {
+public class Order extends Observable {
+    public Order(){
+        this.addObserver(new RomushkaSupplierObserver(this));
+        this.addObserver(new TulipSupplierObserver(this));//де воно для update витягне лінкедліст?
+    }
 
-    public   LinkedList<FlowerBucket> items = new LinkedList<FlowerBucket>();
+    public LinkedList<FlowerBucket> items = new LinkedList<FlowerBucket>();
 
     public LinkedList getItems() {
         return items;
@@ -75,20 +80,18 @@ public class Order extends Observarble {
             return this.delivary.deliver(items);
         }
         if(this.payment != null){
-            return this.payment.pay(100.0);
+            return this.payment.pay(this.TotalPrice());
         }
-        this.NotifyAllObservers(this.items);
+        this.notifyObservers(this.items);
         return "";
 
     }
     public void addItem(FlowerBucket item){
         this.items.add(item);
-        this.NotifyAllObservers(this.items);
 
     }
     public void removeItem(FlowerBucket item){
         items.remove(item);
-        this.NotifyAllObservers(this.items);
 
     }
 
