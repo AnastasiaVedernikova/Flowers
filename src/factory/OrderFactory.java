@@ -7,17 +7,18 @@ import order.Order;
  * Created by cs.ucu.edu.ua on 21.11.2016.
  */
 public class OrderFactory {
-    public Order getBucket(String type){
+    public Order getBucket(TypeBucket type){
         Order order = new Order();
-        if (type.equals("BirthdayBucket")){
+
+      if (type.toString().equals("BirthdayBucket")){
             order.addItem(new BirthdayBucket());
             return order;
         }
-        else if (type.equals("Funeralbucket")){
+        else if (type.toString().equals("Funeralbucket")){
             order.addItem(new Funenalbucket());
             return order;
         }
-        else if (type.equals("WeedingBucket")){
+        else if (type.toString().equals("WeedingBucket")){
             order.addItem(new Funenalbucket());
             return order;
         }

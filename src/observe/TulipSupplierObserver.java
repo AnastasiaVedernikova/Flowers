@@ -12,7 +12,6 @@ import java.util.Observer;
 /**
  * Created by cs.ucu.edu.ua on 14.11.2016.
  */
-
 public class TulipSupplierObserver implements Observer {
     Observable subject;
 

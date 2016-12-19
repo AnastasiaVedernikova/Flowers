@@ -2,6 +2,7 @@ package observe;
 
 import com.vedernikova.*;
 import factory.OrderFactory;
+import factory.TypeBucket;
 import order.FlowerBucket;
 import order.Order;
 
@@ -10,7 +11,7 @@ import order.Order;
  */
 public class MainObserver {
     public static void main(String[] args) {
-        Order order = new OrderFactory().getBucket("BirthdayBucket");
+        Order order = new OrderFactory().getBucket(TypeBucket.BirthdayBucket);
         System.out.println(order.processOrder());
 
     }
